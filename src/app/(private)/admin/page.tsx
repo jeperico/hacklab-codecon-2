@@ -304,9 +304,7 @@ export default function NotificationPage() {
                             checked={selected}
                             onChange={() => toggleSelect(u.id)}
                             disabled={sendToAll}
-                            className="h-5 w-5 rounded border-gray-300 text-[#ea6524] 
-                                     focus:ring-[#ea6524] focus:ring-offset-0 cursor-pointer
-                                     disabled:cursor-not-allowed"
+                            className="h-5 w-5 rounded border-gray-300 text-[#ea6524] focus:ring-[#ea6524] focus:ring-offset-0 cursor-pointer disabled:cursor-not-allowed"
                           />
                           <span
                             className={`text-xs font-medium transition-colors duration-200

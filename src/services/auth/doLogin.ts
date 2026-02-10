@@ -8,14 +8,21 @@ const doLogin = async (
   router: AppRouterInstance
 ): Promise<number> => {
   try {
-    await post('auth', {
+    const res = await post('auth', {
       body: {
         email: data.email,
         password: data.password,
       },
     });
 
-    router.push('/');
+    const role = res.data?.data?.user?.role;
+
+    if (role === 'admin') {
+      router.push('/admin');
+    } else {
+      router.push('/public');
+    }
+
     return 200;
   } catch (error) {
     if (axios.isAxiosError(error)) {
