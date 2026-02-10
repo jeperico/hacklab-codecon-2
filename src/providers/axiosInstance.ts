@@ -40,8 +40,8 @@ api.interceptors.response.use(
       error.response?.status &&
       [401, 403, 405].includes(error.response.status) &&
       !originalRequest._retry &&
-      !originalRequest.url?.includes('auth/refresh') &&
-      !originalRequest.url?.includes('auth/logout')
+      !originalRequest.url?.includes('auth/refresh')
+      // !originalRequest.url?.includes('auth/logout')
     ) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
@@ -58,7 +58,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (err) {
         processQueue(err as AxiosError);
-        if (!originalRequest.url?.includes('auth/login')) {
+        if (!originalRequest.url?.includes('auth')) {
           post('auth/logout');
           const redirectUrl = window.location.origin + '/login';
           window.location.href = redirectUrl;
