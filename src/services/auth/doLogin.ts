@@ -8,7 +8,7 @@ const doLogin = async (
   router: AppRouterInstance
 ): Promise<number> => {
   try {
-    await post('auth/login', {
+    await post('auth', {
       body: {
         email: data.email,
         password: data.password,
